@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+  <section class="section has-background-dark">
+
+    
+    <div class="columns is-centered">
+      
+      <div class="column is-one-third">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+                <div class="message is-centered">
+                  {{ message }}
+                </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <div class="card form-background">
+          <header class="card-header">
+            <p class="card-header-title has-text-white">Sign Up</p>
+          </header>
+          <div class="card-content">
+            <form action="{{url_for('open.login')}}" method="post">
+              <div class="field">
+                <label class="label has-text-white">Email or GitHub Username</label>
+                <div class="control">
+                  <input class="input" name="username" type="text" placeholder="Email or GitHub Username">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-white">Password</label>
+                <div class="control">
+                  <input class="input" name="password" type="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-info is-fullwidth">Sign In</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

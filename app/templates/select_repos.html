@@ -1,0 +1,107 @@
+{% extends 'dashboard.html' %}
+
+{% block dashboard_content %}
+        <!-- Main content -->
+    <div class="subpage-content">
+        <form action="/pick_repos" method="POST">
+        <div class="is-size-2">Public Repositories for <span class="github-username">{{current_user.github_username}}</span></div>
+        <div class="column">
+            <div class="columns is-multiline card-section">
+                {% for repo in repos %}
+                <div class="column is-one-third">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    {% if repo.language == 'C++'%}
+                                        <img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" /> &nbsp; {{ repo.name|truncate(15, True) }} 
+                                    {% elif repo.language|lower == 'html'%}
+                                        <img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" /> &nbsp; {{ repo.name|truncate(15, True) }} 
+                                    {% elif repo.language|lower == 'jupyter notebook'%}
+                                        <img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg" /> &nbsp; {{ repo.name|truncate(15, True) }}
+                                    {% elif repo.language|lower == 'css'%}
+                                        <img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" /> &nbsp; {{ repo.name|truncate(15, True) }}
+                                    {% elif repo.language|lower == 'c#'%}
+                                        <img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" /> &nbsp; {{ repo.name|truncate(15, True) }}
+                                    {% else %}
+                                        {% if repo.language|lower != "none" %}<img class="language-icon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/{{repo.language|lower}}/{{repo.language|lower}}-original.svg" />{% else %} - {% endif %} &nbsp; {{ repo.name|truncate(15, True) }}
+                                    {% endif %}
+                                </p>
+                                <a class="card-header-icon">
+                                    <span class="icon">
+                                        <i class="fas fa-angle-down"></i>
+                                    </span>
+                                </a>
+                            </header>
+                            <div class="card-content is-hidden">
+                                <p class="subtitle is-6"><b>{{ repo.name }}</b></p>
+                                <hr>
+                                {% if repo.description%}
+                                <p class="subtitle is-6">{{ repo.description or 'No description provided' }}</p>
+                                {% endif %}
+                                <p><strong>Language:</strong> {{ repo.language or 'Unknown' }}</p>
+                                <p><strong>Created:</strong> {{ repo.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                <p><strong>Updated:</strong> {{ repo.updated_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                <p><strong>Size:</strong> {{ repo.size }} KB</p>
+                                <hr>
+                                <div class="field">
+                                    {% if repo.name in selected_repos%}
+                                        <input id="repo-{{ loop.index }}a" type="checkbox" name="repo" value="{{ repo.name }}" checked>
+                                        <label for="repo-{{ loop.index }}a">Select</label>
+                                    {% else %}
+                                        <input id="repo-{{ loop.index }}b" type="checkbox" name="repo" value="{{ repo.name }}">
+                                        <label for="repo-{{ loop.index }}b">Select</label>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="button is-warning git-select-button" type="submit">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Select Repos</span>
+              </button>
+            </form>
+    </div>
+            <script>
+                // select all down arrow icons
+                const icons = document.querySelectorAll('.card-header-icon');
+                console.log(icons);
+                // loop through each icon and add a click event listener
+                icons.forEach((icon) => {
+                    icon.addEventListener('click', () => {
+                        // get the parent card's content element
+                        console.log('Click');
+                        const content = icon.parentNode.nextElementSibling;
+        
+                        // toggle the is-hidden class on the content element
+                        content.classList.toggle('is-hidden');
+                    });
+                });
+
+                // select all checkboxes
+                const checkboxes = document.querySelectorAll('input[type=checkbox]');
+
+                checkboxes.forEach((checkbox) => {
+                if(checkbox.checked) {
+                const header = checkbox.closest('.card').querySelector('.card-header');
+                    header.classList.add('has-background-primary');
+                }
+                checkbox.addEventListener('change', () => {
+                    const header = checkbox.closest('.card').querySelector('.card-header');
+                    if (checkbox.checked) {
+                    header.classList.add('has-background-primary');
+                    } else {
+                    header.classList.remove('has-background-primary');
+                    }
+                });
+                });
+
+        </script>
+{% endblock%}
+
+{% block scripts %}
+{% endblock %}

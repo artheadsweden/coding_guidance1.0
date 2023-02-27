@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Coding Guidance Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="columns">
+        <!-- Sidebar -->
+        <div class="column is-2 sidebar">
+            <aside class="menu">
+                <p class="menu-label">
+                    General
+                </p>
+                <ul class="menu-list">
+                    <li><a href="{{url_for('user.user_main')}}"><span class="icon is-small"><i class="fas fa-tachometer-alt"></i></span> Dashboard</a></li>
+                    <li><a href="{{url_for('user.repos')}}"><span class="icon is-small"><i class="fab fa-github"></i> </span> GitHub Repos</a></li>
+                    <li><a href="{{url_for('user.selected_repos')}}"><span class="icon is-small"><i class="fas fa-code-branch"></i> </span> Selected Repos</a></li>
+                    <li><a><span class="icon is-small"><i class="fas fa-chart-bar"></i> </span> Review Code</a></li>
+                    <li><a><span class="icon is-small"><i class="fas fa-chart-line"></i> </span> Compare Reviews</a></li>
+                </ul>
+                <p class="menu-label">
+                    Administration
+                </p>
+                <ul class="menu-list">
+                    <li><a><span class="icon is-small"><i class="fas fa-cog"></i></span> Your Settings</a></li>
+                </ul>
+                <p class="menu-label">
+                    Practice
+                </p>
+                <ul class="menu-list">
+                    <li><a><span class="icon is-small"><i class="devicon-python-plain"></i></i> </span> Python Exercises</a></li>
+                    <li><a><span class="icon is-small"><i class="devicon-cplusplus-plain"></i> </span> C++ Exercises</a></li>
+                    <li><a><span class="icon is-small"><i class="devicon-csharp-plain"></i> </span> C# Exercises</a></li>
+                    <li><a><span class="icon is-small"><i class="devicon-go-plain"></i> </span> Go Exercises</a></li>
+                    <li><a><span class="icon is-small"><i class="devicon-java-plain"></i> </span> Java Exercises</a></li>
+                </ul>
+            </aside>
+        </div>
+
+        {% block dashboard_content%}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+  <section class="section has-background-dark">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <div class="card form-background">
+          <header class="card-header">
+            <p class="card-header-title has-text-white">Sign Up</p>
+          </header>
+          <div class="card-content">
+            <form action="{{url_for('open.register')}}" method="post">
+              <div class="field">
+                <label class="label has-text-white">First name</label>
+                <div class="control">
+                  <input class="input" name="firstname" type="text" placeholder="First name">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-white">Last name</label>
+                <div class="control">
+                  <input class="input" name="lastname" type="text" placeholder="Last name">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-white">GitHub Username</label>
+                <div class="control">
+                  <input class="input" name="github_username" type="text" placeholder="GitHub Username">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-white">Email</label>
+                <div class="control">
+                  <input class="input" name="email" type="email" placeholder="Email">
+                </div>
+              </div>
+              <div class="field">
+                <label class="label has-text-white">Password</label>
+                <div class="control">
+                  <input class="input" name="password" type="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="field">
+                <div class="control">
+                  <button class="button is-primary is-fullwidth">Sign Up</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

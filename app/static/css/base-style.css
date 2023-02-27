@@ -1,0 +1,167 @@
+.card-section {
+    margin-top: 1rem;
+}
+
+/* Make the background of the body dark */
+body {
+    background-color: #363636;
+    color: #f5f5f5;
+    height: 100%;
+}
+
+/* Make the sidebar background color and text color match the body */
+.menu {
+    background-color: #363636;
+    color: #f5f5f5;
+}
+
+/* Make the sidebar links lighter */
+.menu-list a {
+    color: #f5f5f5;
+}
+
+.menu-label {
+    color: #e5c5c5;
+}
+
+/* Make the main section occupy the full width of the page */
+.main-section {
+    width: 100%;
+    padding: 0 !important;
+    min-height: calc(100% - 2.5rem); /* 2.5rem is the height of the footer */
+    height: calc(100vh - 80px);
+    padding-bottom: 2.5rem;
+}
+
+/* Add a margin to the main content area to avoid overlapping with the sidebar */
+.main-content {
+    margin-left: 300px;
+}
+
+/* Make the footer background color and text color match the body */
+footer {
+    color: white;
+    background: rgb(14, 14, 14) !important;
+    height: 2.5rem; /* same as padding-bottom of .content-wrap */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer strong {
+    color: turquoise;
+}
+
+footer a {
+    color: turquoise;
+}
+
+/* Form styling */
+.form-background {
+    background-color: #514f4f;
+    color: #f5f5f5;
+}
+
+/* Flash messages */
+.message {
+    text-align: center;
+    background-color: #514f4f;
+    color: #f5f5f5;
+}
+
+/* Make the subpage scroll independently of the rest of the page */
+.subpage-content {
+    padding-top: 50px;
+    height: calc(100vh - 200px); /* 100vh - height of header and footer */
+    overflow-y: auto;
+  }
+
+  /* Set the width and color of the scrollbar track */
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #333;
+}
+
+/* Set the color of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #666;
+}
+
+/* Set the color of the scrollbar thumb when it is being dragged */
+::-webkit-scrollbar-thumb:active {
+    background-color: #999;
+}
+
+.language-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.github-username {
+    
+    font-weight: 600;
+    color: #00d1b2;
+} 
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.nav-drop {
+    margin-right: 100px;
+}
+
+.nav-drop .navbar-item {
+    padding: 0.5rem 0.75rem;
+    margin-right: 0.5rem;
+}
+
+.navbar-end {
+    margin-right: 20px;
+}
+
+.nav-drop {
+    background-color: #363636;
+  }
+
+.nav-item {
+    color:#f5f5f5;
+}
+
+
+.navbar-item.is-active .navbar-link img {
+    filter: brightness(0.7);
+  }
+
+  .git-select-button {
+    margin-left: 15px;
+  }
+
+  .button-area {
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.notification {
+  background-color: #F5F5F5;
+  border-radius: 4px;
+  border-left: 4px solid #3273dc;
+  color: #4a4a4a;
+  padding: 1rem;
+}
+
+.is-major {
+  background-color: #fde7e9;
+  border-color: #e64980;
+  color: #e64980;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.flake8-card {
+    margin-top: 5px;
+}

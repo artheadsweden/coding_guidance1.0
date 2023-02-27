@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.3/css/bulma.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+        <link rel="stylesheet" href="{{url_for('static', filename='css/base-style.css')}}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+        <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+        {% block head %}{% endblock %}
+   </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <h1 class="title has-text-light">Coding Guidance</h1>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="#">
+                    Documentation
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" href="#">
+                        About Us
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="#">
+                            About
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Jobs
+                        </a>
+                        <a class="navbar-item" href="#">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider" />
+                        <a class="navbar-item" href="#">
+                            Report an issue
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable nav-item">
+                        <a class="navbar-link nav-item" >
+                            <img src="{{ current_user.avatar }}" class="avatar " alt="Avatar">
+                        </a>
+                        
+                        <div class="navbar-dropdown nav-drop">
+                            <a class="navbar-item nav-item" href="{{ url_for('user.user_main') }}">Dashboard</a>
+                            <a class="navbar-item nav-item" href="#">Settings</a>
+                            <hr class="navbar-divider nav-item">
+                            <a class="navbar-item nav-item" href="{{url_for('user.logout')}}">Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a class="button is-primary" href="{{url_for('open.register')}}">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="{{url_for('open.login')}}">
+                                Log in
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        {% block navbar %}{% endblock %}
+    </nav>
+    <section class="section has-background-dark main-section">
+
+        {% block content %}{% endblock %}
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Coding Guidance</strong> by <strong>Arthead AB</strong>. &copy; 2023 - <strong>All rights reserved</strong> </a>
+          </p>
+        </div>
+      </footer>
+{% block scripts%}
+{% endblock %}
+  </body>
+</html>
