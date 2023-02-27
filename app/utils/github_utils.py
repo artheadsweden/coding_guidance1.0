@@ -5,7 +5,7 @@ import os
 import stat
 import subprocess
 
-TOKEN = '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'
+TOKEN = ''
 TIME_FORMAT = '%Y-%m-%dT%H:%M:%SZ'
 
 def get_invites_from_user(username):
